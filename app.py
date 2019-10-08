@@ -9,10 +9,10 @@ from tabs import tab_3
 
 ########### Define your variables ######
 
-myheading1 = 'Plotly Dash -- multiple tabs'
-tabtitle = 'dash tabs'
+myheading1 = 'Multiple Tab Example'
+tabtitle = 'multitab'
 sourceurl = 'https://dash.plot.ly/dash-core-components/tabs'
-githublink = 'https://github.com/austinlasseter/dash-multitab-simple'
+githublink = 'https://github.com/aidanjdm/dash-multitab-simple'
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -28,9 +28,9 @@ app.layout = html.Div([
     html.H1(myheading1),
     dcc.Tabs(id="tabs-example", value='tab-1-example',
             children=[
-                dcc.Tab(label='Tab One', value='tab-1-example'),
-                dcc.Tab(label='Tab Two', value='tab-2-example'),
-                dcc.Tab(label='Tab Three', value='tab-3-example'),
+                dcc.Tab(label='Option A', value='tab-1-example'),
+                dcc.Tab(label='Option B', value='tab-2-example'),
+                dcc.Tab(label='Option C', value='tab-3-example'),
     ]),
     html.Div([
         html.Div(id='tabs-content-example'),
@@ -41,7 +41,7 @@ app.layout = html.Div([
         html.Br(),
         html.A("Data Source", href=sourceurl),
     ], className='twelve columns',
-        style={'textAlign':'right',
+        style={'textAlign':'center',
                 'fontColor':'#FFFFFF',
                 'backgroundColor':'#D3D3D3',})
 ])
@@ -60,13 +60,13 @@ def render_content(tab):
 @app.callback(dash.dependencies.Output('page-1-content', 'children'),
               [dash.dependencies.Input('page-1-dropdown', 'value')])
 def page_1_dropdown(value):
-    return 'You have selected "{}"'.format(value)
+    return f'You picked "{value}"'
 
 # Tab 2 callback
 @app.callback(Output('page-2-content', 'children'),
               [Input('page-2-radios', 'value')])
 def page_2_radios(value):
-    return 'You have selected "{}"'.format(value)
+    return f'You picked "{value}"'
 
 # Tab 3 callback
 @app.callback(Output('page-3-content', 'children'),
